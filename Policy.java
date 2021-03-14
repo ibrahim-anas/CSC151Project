@@ -47,7 +47,11 @@ public class Policy
       policyholderWeight = weight;
    }
    
-   //setters   
+   //setters
+   
+   /**
+   This method 
+   */
    public void setPolicyNum(int policyNum)
    {
       policyNumber = policyNum;

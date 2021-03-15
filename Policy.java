@@ -15,7 +15,7 @@ public class Policy
    private double policyholderWeight;
    
    /**
-   no-arg Constructor 
+   no-arg Constructor
    */
    
    public Policy()

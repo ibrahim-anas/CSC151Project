@@ -14,7 +14,6 @@ public class Project_anas_ibrahim
       String policyholderSmokingStatus;
       double policyholderHeight;
       double policyholderWeight;
-      int totalIterations = 0;
       
       File policyInfo = new File("PolicyInformation.txt");
       
@@ -24,20 +23,19 @@ public class Project_anas_ibrahim
       
       while(input.hasNext()) 
       {
-         Policy demoPolicy = new Policy();
-         
-         demoPolicy.setPolicyNum(input.nextInt());   
+         policyNumber = input.nextInt();   
          input.nextLine();
-         demoPolicy.setProviderName(input.nextLine());
-         demoPolicy.setPolicyholderFirstName(input.nextLine());
-         demoPolicy.setPolicyholderLastName(input.nextLine());
-         demoPolicy.setPolicyholderAge(input.nextInt());
+         providerName = input.nextLine();
+         policyholderFirstName = input.nextLine();
+         policyholderLastName = input.nextLine();
+         policyholderAge = input.nextInt();
          input.nextLine();
-         demoPolicy.setPolicyholderSmokingStatus(input.nextLine());
-         demoPolicy.setPolicyholderHeight(input.nextDouble());
-         demoPolicy.setPolicyholderWeight(input.nextDouble());
-         
-         policyList.add(demoPolicy);
+         policyholderSmokingStatus = input.nextLine();
+         policyholderHeight = input.nextDouble();
+         policyholderWeight = input.nextDouble();
+                   
+         policyList.add(new Policy(policyNumber, providerName, policyholderFirstName, policyholderLastName,
+                                   policyholderAge, policyholderSmokingStatus, policyholderHeight, policyholderWeight));
       }
       
       input.close();

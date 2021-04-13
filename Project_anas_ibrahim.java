@@ -21,8 +21,10 @@ public class Project_anas_ibrahim
       
       ArrayList<Policy> policyList = new ArrayList<Policy>();
       
+      ArrayList<PolicyHolder> policyHolderList = new ArrayList<PolicyHolder>();
+      
       while(input.hasNext()) 
-      {
+      {         
          policyNumber = input.nextInt();   
          input.nextLine();
          providerName = input.nextLine();
@@ -33,40 +35,34 @@ public class Project_anas_ibrahim
          policyholderSmokingStatus = input.nextLine();
          policyholderHeight = input.nextDouble();
          policyholderWeight = input.nextDouble();
-                   
-         policyList.add(new Policy(policyNumber, providerName, policyholderFirstName, policyholderLastName,
-                                   policyholderAge, policyholderSmokingStatus, policyholderHeight, policyholderWeight));
+         
+         PolicyHolder demoPolicyHolder = new PolicyHolder(policyholderFirstName, policyholderLastName, policyholderAge,
+                                                          policyholderSmokingStatus, policyholderHeight, policyholderWeight);
+                                                          
+         Policy demoPolicy = new Policy(policyNumber, providerName, demoPolicyHolder);
+                  
+         System.out.println(demoPolicy);
+                  
+         policyHolderList.add(demoPolicyHolder);
+         
+         policyList.add(demoPolicy);
+         
       }
       
       input.close();
-      
-      for(int i = 0; i < policyList.size(); i++)
-      {                                     
-         System.out.println("\nPolicy Number: " + policyList.get(i).getPolicyNum());
-         System.out.println("Provider Name: " + policyList.get(i).getProviderName());
-         System.out.println("Policyholder's First Name: " + policyList.get(i).getPolicyholderFirstName());
-         System.out.println("Policyholder's Last Name: " + policyList.get(i).getPolicyholderLastName());
-         System.out.println("Policyholder's Age: " + policyList.get(i).getPolicyholderAge());
-         System.out.println("Policyholder's Smoking Status: " + policyList.get(i).getPolicyholderSmokingStatus());
-         System.out.printf("Policyholder's Height: %.1f inches", policyList.get(i).getPolicyholderHeight());
-         System.out.printf("\nPolicyholder's Weight: %.1f pounds", policyList.get(i).getPolicyholderWeight());
-         System.out.printf("\nPolicyholder's BMI: %.2f", policyList.get(i).getBMI());
-         System.out.printf("\nPolicy Price: $%,.2f", policyList.get(i).getPolicyPrice());
-         System.out.println();
-      }
-      
+     
       int smokerCount = 0;
       int nonSmokerCount = 0;
       
-      for(int i = 0; i < policyList.size(); i++)
+      for(int i = 0; i < policyHolderList.size(); i++)
       {
-         if (policyList.get(i).getPolicyholderSmokingStatus().equalsIgnoreCase("smoker"))
+         if (policyHolderList.get(i).getPolicyholderSmokingStatus().equalsIgnoreCase("smoker"))
             smokerCount++;
          else
             nonSmokerCount++;
       }
       
-      System.out.println();
+      System.out.println("There were " + policyList.get(0).getNumPolicyObjects() + " Policy objects created.");
       System.out.println("The number of policies with a smoker is: " + smokerCount);
       System.out.println("The number of policies with a non-smoker is: " + nonSmokerCount);
    }
